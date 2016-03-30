@@ -1,3 +1,0 @@
-angular
-  .module("yearbookApp", ['ngResource']);
-  
