@@ -1,0 +1,22 @@
+{
+  "name": "ollies-pinger",
+  "version": "1.0.0",
+  "description": "A simple pinger to keep heroku apps awake.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odholden/ollies-pinger.git"
+  },
+  "author": "Ollie Holden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odholden/ollies-pinger/issues"
+  },
+  "homepage": "https://github.com/odholden/ollies-pinger#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
