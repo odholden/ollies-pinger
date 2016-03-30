@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="yearbookApp">
+<head>
+  <title>Yearbook</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.js"></script>
+  <script type="text/javascript" src="./js/app.js"></script>
+  <script type="text/javascript" src="./js/resources/user.js"></script>
+  <script type="text/javascript" src="./js/resources/project.js"></script>
+  <script type="text/javascript" src="./js/controller.js"></script>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body ng-controller="YearbookController as yearbook">
+
+  <h1 ng-click="yearbook.viewHomepage()">Yearbook</h1>
+
+  <section id="userindex">
+
+    <h3 ng-click="yearbook.toggleUserForm()" ng-if="yearbook.homepage">//Add Person//</h3>
+
+    <h3 ng-if="yearbook.user">
+      <span ng-click="yearbook.toggleUserForm()">//Edit Person// </span>
+      <span ng-click="yearbook.deleteUser(user)"> //Delete Person//</span>
+      <span ng-click="yearbook.toggleProjectForm()"> //New Project//</span>
+    </h3>
+
+    <h3 ng-if="yearbook.project">
+      <span ng-click="yearbook.toggleProjectForm()">//Edit Project//</span>
+      <span ng-click="yearbook.deleteProject()">//Delete Project//</span>
+    </h3>
+
+    <form id="userForm" ng-if="yearbook.userForm" class="pure-form pure-form-aligned">
+      <div class="pure-control-group">
+        <input type="text" name="name" placeholder="name" ng-model="yearbook.user.name">
+      </div>   
+      <div class="pure-control-group">
+        <input type="text" name="twitter" placeholder="twitter" ng-model="yearbook.user.twitter">
+      </div>
+      <div class="pure-control-group">
+        <input type="text" name="github" placeholder="github" ng-model="yearbook.user.github">
+      </div>
+      <div class="pure-control-group">
+        <input type="text" name="portfolio" placeholder="portfolio" ng-model="yearbook.user.portfolio">
+      </div>
+      <div class="pure-control-group">
+        <input type="text" name="bio" placeholder="bio" ng-model="yearbook.user.bio">
+      </div>
+      <button type="submit" ng-click="yearbook.addUser()" class="pure-button pure-button-primary">//Submit//</button>
+    </form>
+
+    <ul class="pure-g" ng-if="yearbook.homepage">
+      <li class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3" ng-repeat="user in yearbook.users" ng-click="yearbook.showUser(user)">
+        <h2>{{ user.name }}</h2>
+        <img ng-src="http://www.fillmurray.com/g/200/200">
+      </li>
+    </ul>
+
+  </section>
+
+  <section id="usershow">
+
+    <form id="projectForm" ng-if="yearbook.projectForm" class="pure-form pure-form-aligned">
+      <div class="pure-control-group">
+        <input type="text" name="title" placeholder="title" ng-model="yearbook.project.title">
+      </div>   
+      <div class="pure-control-group">
+        <input type="text" name="website" placeholder="website" ng-model="yearbook.project.website">
+      </div>
+      <div class="pure-control-group">
+        <input type="text" name="github" placeholder="github" ng-model="yearbook.project.github">
+      </div>
+      <div class="pure-control-group">
+        <input type="text" name="description" placeholder="description" ng-model="yearbook.project.description">
+      </div>
+      <button type="submit" ng-click="yearbook.addProject()" class="pure-button pure-button-primary">//Submit//</button>
+    </form>
+
+    <div class="left" ng-if="yearbook.user">
+      <h4>{{ yearbook.user.name }}</h4>
+      <img ng-src="http://www.fillmurray.com/g/200/200">
+    </div>
+
+    <div class="right" ng-if="yearbook.user">
+      <p ng-if="yearbook.user.twitter">&nbsp; Twitter: {{ yearbook.user.twitter }}</p>
+      <p ng-if="yearbook.user.github">&nbsp;&nbsp; Github: {{ yearbook.user.github }}</p>
+      <p ng-if="yearbook.user.portfolio">Portfolio: {{ yearbook.user.portfolio }}</p>
+      <p ng-if="yearbook.user.bio">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bio: {{ yearbook.user.bio }}</p>
+      <br>
+      <p ng-if="yearbook.user.projects"><u>Projects</u></p>
+      <p ng-if="yearbook.user.projects" ng-repeat="project in yearbook.user.projects" ng-click="yearbook.showProject(project)">{{ project.title }}</p>
+    </div>
+
+  </section>
+
+  <section id="projectshow" ng-if="yearbook.project">
+    <p ng-if="yearbook.project.title">&nbsp;&nbsp;&nbsp;&nbsp; Title: {{ yearbook.project.title }}</p>
+    <p ng-if="yearbook.project.website">&nbsp;&nbsp; Website: {{ yearbook.project.website }}</p>
+    <p ng-if="yearbook.project.github">&nbsp;&nbsp;&nbsp; Github: {{ yearbook.project.github }}</p>
+    <p ng-if="yearbook.project.description">Descripton: {{ yearbook.project.description }}</p>
+  </section>
+
+</body>
+</html>
