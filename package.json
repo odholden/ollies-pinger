@@ -1,22 +1,21 @@
 {
-  "name": "ollies-pinger",
+  "name": "quotes-app",
   "version": "1.0.0",
-  "description": "A simple pinger to keep heroku apps awake.",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/odholden/ollies-pinger.git"
-  },
-  "author": "Ollie Holden",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/odholden/ollies-pinger/issues"
-  },
-  "homepage": "https://github.com/odholden/ollies-pinger#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-ejs-layouts": "^2.0.0",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1",
+    "path": "^0.12.7"
   }
 }

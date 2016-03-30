@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Edit Quote</h1>
+  <form method="patch" action="/quotes">
+    <input type="text" name="quote[name]" placeholder="enter author" value="<%= quote.name %>">
+    <input type="text" name="quote[content]" placeholder="enter quote" value="<%= quote.content %>">
+    <button class="btn">make changes</button>
+  </form>
+</div>
